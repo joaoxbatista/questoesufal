@@ -22,7 +22,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Sistema de Questionários</a>
+                    <a class="navbar-brand" href="{{ route('dash.home') }}">Sistema de Questionários</a>
                 </div>
         
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,8 +46,9 @@
         <div class="container">
            @yield('content')
         </div>
-
+        
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        @yield('scripts')
     </body>
 </html>

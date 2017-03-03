@@ -13,4 +13,8 @@ class QuestionarioCtrl extends Controller
    public function getCadastrar(){
    	return view('dashboard.questionario.cadastrar');
    }
+
+   public function postCadastrar(Request $request){
+   	dump($request);
+   }
 }
