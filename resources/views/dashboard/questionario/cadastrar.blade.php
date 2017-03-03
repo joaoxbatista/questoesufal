@@ -1,6 +1,6 @@
 @extends('templates.dashboard')
 @section('titulo') Questionarios - cadastrar @endsection
-@section('content') 
+@section('content')
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -25,20 +25,28 @@
 						{!! Form::text('data_fim', '', ['class' => 'form-control', 'id' => 'date_fim']) !!}
 					</div>
 				</div>
-				
+
+				<div class="row">
+					<div class="col-md-3">
+						{!! Form::label('pontuacao', 'Pontuação') !!}
+						{!! Form::number('pontuacao', '', ['class' => 'form-control']) !!}
+					</div>
+				</div>
+
+
 				<div class="row">
 					<div class="form-group col-md-12">
 						{!! Form::label('descricao', 'Descrição') !!}
 						{!! Form::textarea('descricao', '', ['class' => 'form-control']) !!}
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="form-group col-md-3">
 						{!! Form::submit('Cadastrar', ['class' => 'btn btn-success btn-block']) !!}
 					</div>
 				</div>
-				
+
 			{!! Form::close() !!}
 		</div>
 	</div>
@@ -48,16 +56,15 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <script>
     $(document).ready(function(){
-            
       var options={
-        format: 'mm/dd/yyyy',
+        format: 'dd/mm/yyyy',
         todayHighlight: true,
         autoclose: true,
       };
 
       $('#date_ini').datepicker(options);
       $('#date_fim').datepicker(options);
-  
+
     })
 </script>
 

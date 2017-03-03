@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Questionario;
 
 class QuestionarioCtrl extends Controller
 {
@@ -15,6 +16,9 @@ class QuestionarioCtrl extends Controller
    }
 
    public function postCadastrar(Request $request){
-   	dump($request);
+    $questionario = $request->except('_token');
+    echo $questionario['data_ini'] = ;
+    dump($questionario);
+
    }
 }
