@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questionario extends Model
 {
-    protected $fillable = ['titulo', 'data_ini', 'data_fim', 'pontuacao', 'descricacao'];
+    protected $fillable = ['titulo', 'data_ini', 'data_fim', 'pontuacao', 'descricacao', 'user_id'];
     public $timestamps = false;
 }

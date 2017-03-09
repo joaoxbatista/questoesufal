@@ -15,10 +15,12 @@ class CreateQuestionariosTable extends Migration
     {
         Schema::create('questionarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('titulo');
             $table->integer('pontuacao');
             $table->date('data_ini');
             $table->date('data_fim');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
