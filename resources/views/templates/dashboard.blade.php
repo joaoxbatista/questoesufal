@@ -21,7 +21,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('dash.home') }}">Sistema de Questionários</a>
+                    <a class="navbar-brand" href="{{ route('dash.home') }}">{{ Auth::user()->name }}</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,7 +70,7 @@
               </div>
             </div>
           </div>
-           @yield('content')
+          @yield('content')
         </div>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
