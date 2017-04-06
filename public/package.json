@@ -1,0 +1,21 @@
+{
+  "name": "questoesufal",
+  "version": "1.0.0",
+  "description": "Sistema para cadastro de questionários",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "João Batista Gomes Silva",
+  "license": "ISC",
+  "keywords": [
+    "questionario",
+    "ufal"
+  ],
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.1"
+  }
+}
