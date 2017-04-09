@@ -17,7 +17,7 @@ Auth::routes();
 /**
 *Rotas das Páginas
 */
-Route::get('/', 'PaginasCtrl@index')->name('inicio');
+Route::get('/', 'PagesCtrl@index')->name('inicio');
 
 
 /**
@@ -33,24 +33,62 @@ Route::get('/sair', function(){
 *Rotas do Painel
 */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
-	Route::get('', 'DashboardCtrl@index')->name('dash.home')->middleware('auth');
+	Route::get('', 'DashboardCtrl@index')->name('dash.home');
 
+	/**
+	*Rotas para questionários
+	*/
 	Route::group(['prefix' => 'questionario'], function(){
 
-		/*Listagem de questionários*/
-		Route::get('', 'QuestionarioCtrl@index')->name('questionario');
+		Route::get('', 'QuestionnaireCtrl@index')->name('questionnaire');
+		Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
+		Route::post('criar', 'QuestionnaireCtrl@createPost')->name('questionnaire.create');
 
-		/*Registro de questionários*/
-		Route::get('cadastrar', 'QuestionarioCtrl@getCadastrar')->name('questionario.cadastrar');
-		Route::post('cadastrar', 'QuestionarioCtrl@postCadastrar')->name('questionario.cadastrar');
+		Route::get('editar', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');
+		Route::post('editar', 'QuestionnaireCtrl@editPost')->name('questionnaire.edit');
 
-		/*Edição de questionários*/
-		Route::get('editar/{id}', 'QuestionarioCtrl@getEditar')->name('questionario.getEditar');
-		Route::post('editar', 'QuestionarioCtrl@postEditar')->name('questionario.postEditar');
+		Route::get('apagar', 'QuestionnaireCtrl@deleteGet')->name('questionnaire.delete');
+		Route::post('apagar', 'QuestionnaireCtrl@deletePost')->name('questionnaire.delete');
 
-		/*Remoção de questionários*/
-		Route::get('delete/{id}', 'QuestionarioCtrl@getDeletar')->name('questionario.getDeletar');
-		Route::post('delete', 'QuestionarioCtrl@postDeletar')->name('questionario.postDeletar');
+		/**
+		*Rotas para questões fechadas
+		*/
+		Route::group(['prefix' => 'questao_fechada'], function(){
+
+			Route::get('', 'CloseQuestionCtrl@index')->name('close_question');
+			Route::get('criar', 'CloseQuestionCtrl@createGet')->name('close_question.create');
+			Route::post('criar', 'CloseQuestionCtrl@createPost')->name('close_question.create');
+
+			Route::get('editar', 'CloseQuestionCtrl@editGet')->name('close_question.edit');
+			Route::post('editar', 'CloseQuestionCtrl@editPost')->name('close_question.edit');
+
+			Route::get('apagar', 'CloseQuestionCtrl@deleteGet')->name('close_question.delete');
+			Route::post('apagar', 'CloseQuestionCtrl@deletePost')->name('close_question.delete');
+
+			/**
+			*Rotas para alternativas
+			*/
+			Route::group(['prefix' => 'alternativa'], function(){
+
+			});	
+		});
+
+		/**
+		*Rotas para questões abertas
+		*/
+		Route::group(['prefix' => 'questao_aberta'], function(){
+
+			Route::get('', 'OpenQuestionCtrl@index')->name('open_question');
+			Route::get('criar', 'OpenQuestionCtrl@createGet')->name('open_question.create');
+			Route::post('criar', 'OpenQuestionCtrl@createPost')->name('open_question.create');
+
+			Route::get('editar', 'OpenQuestionCtrl@editGet')->name('open_question.edit');
+			Route::post('editar', 'OpenQuestionCtrl@editPost')->name('open_question.edit');
+
+			Route::get('apagar', 'OpenQuestionCtrl@deleteGet')->name('open_question.delete');
+			Route::post('apagar', 'OpenQuestionCtrl@deletePost')->name('open_question.delete');
+
+		});
 	});
 });
 
