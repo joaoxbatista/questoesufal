@@ -1,0 +1,24 @@
+{
+  "name": "questoesufal",
+  "description": "Sistema para cadastro de questionários",
+  "main": "index.html",
+  "authors": [
+    "João Batista Gomes Silva"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "questionario",
+    "ufal"
+  ],
+  "homepage": "https://github.com/joaoxbatista/questoesufal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}

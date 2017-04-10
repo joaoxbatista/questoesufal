@@ -13,9 +13,11 @@
     "ufal"
   ],
   "devDependencies": {
+    "bower": "^1.8.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.5.1"
+    "gulp-sourcemaps": "^2.5.1",
+    "vue": "^2.2.6"
   }
 }
