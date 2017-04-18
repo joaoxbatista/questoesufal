@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\OpenQuestion;
+use App\Questionnaire;
 use Illuminate\Http\Request;
 
 class OpenQuestionCtrl extends Controller
@@ -9,7 +10,8 @@ class OpenQuestionCtrl extends Controller
 	public function index(){}
 
 	public function createGet(){
-		return view('dashboard.open_question.create');
+		$questionnaires = Questionnaire::all()->pluck('title', 'id');
+		return view('dashboard.open_question.create', compact('questionnaires'));
 	}
 	public function createPost(Request $request){
 

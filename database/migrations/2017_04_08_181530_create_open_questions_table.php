@@ -17,6 +17,8 @@ class CreateOpenQuestionsTable extends Migration
             $table->increments('id');
             $table->text('statement');
             $table->string('comments');
+            $table->integer('questionnaire_id')->unsigned();
+            $table->foreign('questionnaire_id')->references('id')->on('questionnaires');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
         });

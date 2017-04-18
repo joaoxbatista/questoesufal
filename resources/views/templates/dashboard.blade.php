@@ -33,7 +33,15 @@
 
 
 				<ul class="nav navbar-nav navbar-right">
-
+					<li><a href="{{route('dash.home')}}">Dashboard</a></li>
+					<li><a href="{{route('questionnaire')}}">Questionários</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Questões</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ route('open_question.create')}}">Abertas</a></li>
+							<li><a href="{{ route('close_question.create') }}">Fechadas</a></li>
+						</ul>
+					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -71,11 +79,8 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<h3 class="text-center">@yield('titulo')</h3>
-		</div>
 		<div class="row">	
+			<h3>@yield('titulo')</h3>
 			@yield('content')
 		</div>	
 	</div>

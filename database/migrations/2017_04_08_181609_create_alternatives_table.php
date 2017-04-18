@@ -16,7 +16,6 @@ class CreateAlternativesTable extends Migration
         Schema::create('alternatives', function (Blueprint $table) {
             $table->increments('id');
             $table->string('statement');
-            $table->boolean('correct');
             $table->integer('close_question_id')->unsigned();
             $table->foreign('close_question_id')->references('id')->on('close_questions');
         });

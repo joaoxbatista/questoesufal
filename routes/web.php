@@ -44,11 +44,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 		Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
 		Route::post('criar', 'QuestionnaireCtrl@createPost')->name('questionnaire.create');
 
-		Route::get('editar', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');
-		Route::post('editar', 'QuestionnaireCtrl@editPost')->name('questionnaire.edit');
+		Route::get('editar/{id}', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');
+		Route::post('editar', 'QuestionnaireCtrl@editPost')->name('questionnaire.postEdit');
 
 		Route::get('apagar', 'QuestionnaireCtrl@deleteGet')->name('questionnaire.delete');
 		Route::post('apagar', 'QuestionnaireCtrl@deletePost')->name('questionnaire.delete');
+
+		Route::get('view/{id}', 'QuestionnaireCtrl@view')->name('questionnaire.view');
 
 		/**
 		*Rotas para questões fechadas
