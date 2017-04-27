@@ -25,7 +25,7 @@ Route::get('/', 'PagesCtrl@index')->name('inicio');
 */
 Route::get('/sair', function(){
 	Auth::logout();
-    return Redirect::route('inicio');
+	return Redirect::route('inicio');
 })->name('sair');
 
 
@@ -72,7 +72,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 			*/
 			Route::group(['prefix' => 'alternativa'], function(){
 
+				Route::get('adicionar/{id}', 'AlternativeCtrl@add')->name('alternative.add');
+				Route::post('adicionar', 'AlternativeCtrl@addPost')->name('alternative.add.post');
+				
+				Route::get('editar', 'AlternativeCtrl@editGet')->name('alternative.edit');
+				Route::get('editar', 'AlternativeCtrl@editPost')->name('alternative.edit');
+
+				Route::get('apagar', 'AlternativeCtrl@deleteGet')->name('alternative.delete');
+				Route::get('apagar', 'AlternativeCtrl@deletePost')->name('alternative.delete');
 			});	
+
 		});
 
 		/**

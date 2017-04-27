@@ -3,6 +3,7 @@
 @section('content')
 		<div class="nav-buttons">
 			<a href="{{ route('dash.home') }}" class="btn btn-default">Voltar</a>
+			<a href="{{ route('questionnaire.create') }}" class="btn btn-primary">Criar</a>
 		</div>
 		<table class="table table-bordered table-striped">
 				<thead>	

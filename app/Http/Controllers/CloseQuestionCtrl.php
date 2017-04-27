@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 use App\CloseQuestion;
 use App\Alternative;
 use Illuminate\Http\Request;
+use App\questionnaire;
 
 class CloseQuestionCtrl extends Controller
 {
     public function index(){}
 
 	public function createGet(){
-		return view('dashboard.close_question.create');
+		$questionnaires = Questionnaire::all()->pluck('title', 'id');
+		return view('dashboard.close_question.create', compact('questionnaires'));
 	}
+	
 	public function createPost(Request $request){
 
 		$this->validate($request, 
@@ -26,28 +29,16 @@ class CloseQuestionCtrl extends Controller
 		$close_question_id = CloseQuestion::create($request->except('_token'))->id;
 
 		$alternatives = $request->input('alternatives');
-		$alternatives = array_combine($alternatives['statement'], $alternatives['correct']);
 
 		
-
-		foreach ($alternatives as $statement => $correct) {
-			
-			if($correct == 1){
-				$correct = true;
-			}else{
-				$correct = false;
-			}
-
-			Alternative::create([
-					'statement' => $statement,
-					'correct' => $correct,
-					'close_question_id' => $close_question_id
-			]);
+		foreach ($alternatives as $alternative) {
+			if(!empty($alternative)):
+				Alternative::create([
+						'statement' => $alternative,
+						'close_question_id' => $close_question_id
+				]);
+			endif;
 		}
-		
-		
-		
-
 		
 		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
 	}

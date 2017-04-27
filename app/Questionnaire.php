@@ -12,4 +12,8 @@ class Questionnaire extends Model
     public function openQuestions(){
     	return $this->hasMany('App\OpenQuestion');
     }
+
+    public function CloseQuestions(){
+    	return $this->hasMany('App\CloseQuestion');
+    }
 }
