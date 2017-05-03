@@ -17,8 +17,7 @@ class OpenQuestionCtrl extends Controller
 
 		$this->validate($request, 
 			[
-				'statement' => 'required|max:300',
-				'comments' => 'required|max:300',
+				'statement' => 'required',
 				'user_id' => 'required'
 			]
 		);

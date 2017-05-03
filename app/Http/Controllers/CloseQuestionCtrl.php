@@ -19,8 +19,7 @@ class CloseQuestionCtrl extends Controller
 
 		$this->validate($request, 
 			[
-				'statement' => 'required|max:300',
-				'comments' => 'required|max:300',
+				'statement' => 'required',
 				'user_id' => 'required',
 
 			]
@@ -43,13 +42,20 @@ class CloseQuestionCtrl extends Controller
 		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
 	}
 
-	public function editGet(){
-		return view('dashboard.questionnaire.edit');
+	public function editGet($id){
+		
+		$close_question = CloseQuestion::find($id);
+		return view('dashboard.close_question.edit', compact('close_question'));
 	}
-	public function editPost(Request $request){}
+	public function editPost(Request $request){
 
-	public function deleteGet(){
-		return view('dashboard.questionnaire.delte');
 	}
-	public function deletePost(Request $request){}
+
+	public function deleteGet($id){
+		CloseQuestion::find($id)->delete();
+		return redirect()->back()->with('success', 'Questão removida com sucesso!');
+	}
+	public function deletePost(Request $request){
+
+	}
 }

@@ -15,11 +15,14 @@ class CreateRespondersTable extends Migration
     {
         Schema::create('responders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('enrollment');
-            $table->string('class');
-            $table->string('course');
-            $table->string('name');
-            $table->string('email');
+            $table->string('enrollment'); //Número da matrícula
+            $table->string('class'); //Turma
+            $table->string('course'); //Curso
+            $table->string('name'); //Nome
+            $table->string('email')->unique(); //E-mail
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

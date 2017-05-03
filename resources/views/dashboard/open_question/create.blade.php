@@ -17,12 +17,12 @@
 
 	<div class="form-group">
 		{{Form::label('statment', 'Enunciado')}}
-		{{Form::text('statement', '', ['required' => true, 'class' => 'form-control'])}}
+		{{Form::textarea('statement', '', ['required' => true, 'class' => 'form-control'])}}
 	</div>
 	
 	<div class="form-group ">
 		{{Form::label('comments', 'Observações')}}
-		{{Form::textarea('comments', '', ['required' => true, 'class' => 'form-control'])}}
+		{{Form::text('comments', '', ['required' => true, 'class' => 'form-control'])}}
 	</div>
 
 	<div class="form-group">

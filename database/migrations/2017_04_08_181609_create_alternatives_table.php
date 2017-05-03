@@ -17,7 +17,7 @@ class CreateAlternativesTable extends Migration
             $table->increments('id');
             $table->string('statement');
             $table->integer('close_question_id')->unsigned();
-            $table->foreign('close_question_id')->references('id')->on('close_questions');
+            $table->foreign('close_question_id')->references('id')->on('close_questions')->onDelete('cascade');
         });
     }
 

@@ -6,9 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>@yield('titulo')</title>
+
 	<link rel="stylesheet" type="text/css" href="{{url('css/autoload.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('css/templates/default.css')}}">
-
+	
+	@yield('style')
 </head>
 <body>
 

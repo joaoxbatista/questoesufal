@@ -11,44 +11,65 @@
 	</header>
 
 	<p>{{ $questionnaire->description }}</p>
-
-	<a href="{{ route('questionnaire') }}" class="btn btn-primary">Adicionar Questão Aberta</a>
-	<a href="{{ route('questionnaire') }}" class="btn btn-primary">Adicionar Questão Fechada</a>
+	
 </article>
 
 
 {{-- Questões Abertas --}}
-<div class="open-questions">
-	<h2>Questões Abertas</h2>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Questões Abertas</h3>
+	</div>
+	<div class="panel-body">
+		@foreach ($questionnaire->openQuestions as $index => $openQuestion)
+		<div class="question">
+			<h4>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h4>
+			<p> <strong>Observações: </strong>{{ $openQuestion->comments }}</p>
+			<a href="" class="btn btn-warning">Editar</a>
+			<a href="" class="btn btn-danger">Deletar</a>
+		</div>
+		@endforeach
 
-	@foreach ($questionnaire->openQuestions as $index => $openQuestion)
-	<div class="question">
-		<h3>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h3>
-		<p>{{ $openQuestion->comments }}</p>
-		
 		
 	</div>
-	@endforeach
-
 </div>
 
+
+
+@if (count($questionnaire->closeQuestions) > 0)
 {{-- Questões Fechadas --}}
-<div class="close-questions">
-	<h2>Questões Fechadas</h2>
-	
-	@foreach ($questionnaire->closeQuestions as $index => $closeQuestion)
-	<div class="question">
-		<h3>{{ $index+=1 }}ª) {{ $closeQuestion->statement }}</h3>
-		<p>{{ $closeQuestion->comments }}</p>
-		<ol>
-			@foreach ($closeQuestion->alternatives as $alternative)
-				<li>{{$alternative->statement}}</li>
-			@endforeach
-		</ol>
-		
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3>Questões Fechadas</h3>
 	</div>
-	@endforeach
-
+	<div class="panel-body">
+		@foreach ($questionnaire->closeQuestions as $index => $closeQuestion)
+		<div class="question">
+			<h4>{{ $index+=1 }}ª) {{ $closeQuestion->statement }}</h4>
+			<p><strong>Observações: </strong>{{ $closeQuestion->comments }}</p>
+			<ol>
+				@foreach ($closeQuestion->alternatives as $alternative)
+				<li>{{$alternative->statement}}</li>
+				@endforeach
+			</ol>
+		
+			<a href="{{ route('close_question.edit.get', [$closeQuestion->id]) }}" class="btn btn-warning">Editar</a>
+			<a href="{{ route('close_question.delete.get', [$closeQuestion->id]) }}" class="btn btn-danger">Deletar</a>
+		</div>
+		@endforeach
+	</div>
 </div>
+@endif
+@endsection
 
+@section('style')
+	<style>
+		.question{
+			text-align: justify;
+			margin-bottom: 40px;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #eee;
+
+		}
+	</style>
 @endsection

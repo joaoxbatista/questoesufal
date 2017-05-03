@@ -27,7 +27,7 @@
 								<td>{{ $questionnaire->description }}</td>
 								<td>
 									<a href="{{ route('questionnaire.edit', $questionnaire->id) }}" class="btn btn-block btn-warning">Editar</a>
-									<a href="{{ route('questionnaire.view', $questionnaire->id) }}" class="btn btn-block btn-info">Visualizar</a>
+									<a href="{{ route('questionnaire.view', $questionnaire->id) }}" class="btn btn-block btn-primary">Visualizar</a>
 								</td>
 							</tr>
 						@endforeach	
