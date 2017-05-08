@@ -26,14 +26,28 @@ class OpenQuestionCtrl extends Controller
 		return redirect()->back()->with('success', 'Questão aberta cadastrada com sucesso!');
 	}
 
-	public function editGet(){
-		return view('dashboard.questionnaire.edit');
+	public function editGet($id){
+		$open_question = OpenQuestion::find($id);
+		return view('dashboard.open_question.edit', compact('open_question'));
 	}
-	public function editPost(Request $request){}
 
-	public function deleteGet(){
-		return view('dashboard.questionnaire.delte');
+	public function editPost(Request $request){
+
+		$open_question = OpenQuestion::find($request->input('id'));
+		$open_question->statement = $request->input('statement');
+		$open_question->comments = $request->input('comments');
+		$open_question->save();
+
+		 return redirect()->back()->with('success', 'Questão aberta editada com sucesso!');
 	}
-	public function deletePost(Request $request){}
+
+	public function deleteGet($id){
+		OpenQuestion::find($id)->delete();
+		return redirect()->back()->with('success', 'Questão aberta removida com sucesso!');
+	}
+
+	public function deletePost(Request $request){
+
+	}
 
 }

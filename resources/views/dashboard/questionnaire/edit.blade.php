@@ -33,7 +33,7 @@
 
 <div class="row">
 	<div class="col-md-2">
-		{{Form::submit('Registrar', ['class' => 'btn btn-block btn-success'])}}
+		{{Form::submit('Atualizar', ['class' => 'btn btn-block btn-success'])}}
 	</div>
 </div>	
 {{Form::close()}}

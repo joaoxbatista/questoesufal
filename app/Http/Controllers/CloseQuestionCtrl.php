@@ -45,10 +45,26 @@ class CloseQuestionCtrl extends Controller
 	public function editGet($id){
 		
 		$close_question = CloseQuestion::find($id);
+
 		return view('dashboard.close_question.edit', compact('close_question'));
 	}
 	public function editPost(Request $request){
+		
+		$close_question= CloseQuestion::find($request->input('id'));
 
+
+		$alternatives = $request->input('alternatives');
+
+		
+		foreach ($alternatives as $alternative) {
+			if(!empty($alternative)):
+				Alternative::create([
+						'statement' => $alternative,
+						'close_question_id' => $close_question_id
+				]);
+			endif;
+		}
+		
 	}
 
 	public function deleteGet($id){

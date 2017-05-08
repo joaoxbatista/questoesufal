@@ -94,10 +94,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 			Route::get('criar', 'OpenQuestionCtrl@createGet')->name('open_question.create');
 			Route::post('criar', 'OpenQuestionCtrl@createPost')->name('open_question.create');
 
-			Route::get('editar', 'OpenQuestionCtrl@editGet')->name('open_question.edit');
+			Route::get('editar/{id}', 'OpenQuestionCtrl@editGet')->name('open_question.edit.get');
 			Route::post('editar', 'OpenQuestionCtrl@editPost')->name('open_question.edit');
 
-			Route::get('apagar', 'OpenQuestionCtrl@deleteGet')->name('open_question.delete');
+			Route::get('apagar/{id}', 'OpenQuestionCtrl@deleteGet')->name('open_question.delete.get');
 			Route::post('apagar', 'OpenQuestionCtrl@deletePost')->name('open_question.delete');
 
 		});

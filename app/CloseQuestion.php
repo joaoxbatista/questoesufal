@@ -12,4 +12,8 @@ class CloseQuestion extends Model
 	public function alternatives(){
 		return $this->hasMany('App\Alternative');
 	}
+
+	public function questionnaire(){
+		return $this->belongsTo('App\Questionnaire');
+	}
 }

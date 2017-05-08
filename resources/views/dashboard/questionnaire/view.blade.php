@@ -25,8 +25,8 @@
 		<div class="question">
 			<h4>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h4>
 			<p> <strong>Observações: </strong>{{ $openQuestion->comments }}</p>
-			<a href="" class="btn btn-warning">Editar</a>
-			<a href="" class="btn btn-danger">Deletar</a>
+			<a href="{{ route('open_question.edit.get', [$openQuestion->id]) }}" class="btn btn-warning">Editar</a>
+			<a href="{{ route('open_question.delete.get', [$openQuestion->id]) }}" class="btn btn-danger">Deletar</a>
 		</div>
 		@endforeach
 
