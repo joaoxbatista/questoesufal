@@ -11,18 +11,13 @@
 	{{Form::hidden('user_id',  Auth::user()->id)}}
 	
 	<div class="form-group">
-		{{Form::label('questionnaire_id', 'Questionário')}}
-		{{Form::select('questionnaire_id', $questionnaires, '',['required' => true, 'class' => 'form-control'])}}
-	</div>
-
-	<div class="form-group">
 		{{Form::label('statment', 'Enunciado')}}
 		{{Form::textarea('statement', '', ['required' => true, 'class' => 'form-control'])}}
 	</div>
 	
 	<div class="form-group ">
 		{{Form::label('comments', 'Observações')}}
-		{{Form::text('comments', '', ['required' => true, 'class' => 'form-control'])}}
+		{{Form::text('comments', '', ['class' => 'form-control'])}}
 	</div>
 
 	<div class="form-group">

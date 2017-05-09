@@ -1,14 +1,15 @@
 @extends('templates.dashboard')
 @section('titulo') Dashboard - Criação de Questões fechadas @endsection
 @section('content') 
+<div class="nav-buttons">
+	<a href="{{ route('questionnaire.view', $questionnaire_id) }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
+
+
+	
+</div>
 
 {{Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
 {{Form::hidden('user_id',  Auth::user()->id)}}
-
-<div class="form-group">
-	{{Form::label('questionnaire_id', 'Questionário')}}
-	{{Form::select('questionnaire_id', $questionnaires, '',['required' => true, 'class' => 'form-control'])}}
-</div>
 
 <div class="form-group">
 	{{Form::label('statment', 'Enunciado')}}

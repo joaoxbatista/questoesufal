@@ -3,7 +3,7 @@
 @section('content') 
 
 <div class="nav-buttons">
-	<a href="{{ route('questionnaire') }}" class="btn btn-default">Voltar</a>
+	<a href="{{ route('questionnaire') }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
 </div>
 {{Form::open(['method' => 'post', 'route' => 'questionnaire.postEdit'])}}
 

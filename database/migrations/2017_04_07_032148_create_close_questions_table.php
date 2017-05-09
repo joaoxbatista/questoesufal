@@ -16,7 +16,7 @@ class CreateCloseQuestionsTable extends Migration
         Schema::create('close_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->text('statement');
-            $table->string('comments');
+            $table->string('comments')->nullable();
             $table->integer('questionnaire_id')->unsigned();
             $table->foreign('questionnaire_id')->references('id')->on('questionnaires')->onDelete('cascade');
             $table->integer('user_id')->unsigned();

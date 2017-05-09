@@ -35,15 +35,7 @@
 
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{route('dash.home')}}">Dashboard</a></li>
 					<li><a href="{{route('questionnaire')}}">Questionários</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Questões</a>
-						<ul class="dropdown-menu">
-							<li><a href="{{ route('open_question.create')}}">Abertas</a></li>
-							<li><a href="{{ route('close_question.create') }}">Fechadas</a></li>
-						</ul>
-					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -58,31 +50,29 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="group-messages">
-					@if( count($errors) > 0 )
-					<div class="alert alert-danger alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Ocorreram os seguintes erros:</strong>
-						<ul>
-							@foreach( $errors->all() as $error)
-							<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
-					@endif
-
-					@if( session()->has('success'))
-					<div class="alert alert-success alert-dismissable">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Sucesso!</strong> {{ session('success')}}
-					</div>
-					@endif
+			<div class="group-messages">
+				@if( count($errors) > 0 )
+				<div class="alert alert-danger alert-dismissable">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Ocorreram os seguintes erros:</strong>
+					<ul>
+						@foreach( $errors->all() as $error)
+						<li>{{ $error }}</li>
+						@endforeach
+					</ul>
 				</div>
+				@endif
+
+				@if( session()->has('success'))
+				<div class="alert alert-success alert-dismissable">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<strong>Sucesso!</strong> {{ session('success')}}
+				</div>
+				@endif
 			</div>
 		</div>
 		<div class="row">	
-			<h3>@yield('titulo')</h3>
+			<h3 class="title-page">@yield('titulo')</h3>
 			@yield('content')
 		</div>	
 	</div>

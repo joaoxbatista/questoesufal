@@ -10,6 +10,11 @@ class CloseQuestionCtrl extends Controller
 {
     public function index(){}
 
+	public function create(Request $request){
+		
+		$questionnaire_id = $request->get('questionnaire_id');
+		return view('dashboard.close_question.create', compact('questionnaire_id'));
+	}
 	public function createGet(){
 		$questionnaires = Questionnaire::all()->pluck('title', 'id');
 		return view('dashboard.close_question.create', compact('questionnaires'));

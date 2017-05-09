@@ -10,6 +10,7 @@
 	{{Form::open(['method' => 'post', 'route' => 'open_question.edit'])}}
 	
 	{{Form::hidden('id', $open_question->id)}}
+	
 	<div class="form-group">
 		{{Form::label('statment', 'Enunciado')}}
 		{{Form::textarea('statement', $open_question->statement, ['required' => true, 'class' => 'form-control'])}}

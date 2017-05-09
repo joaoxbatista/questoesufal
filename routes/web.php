@@ -33,7 +33,7 @@ Route::get('/sair', function(){
 *Rotas do Painel
 */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
-	Route::get('', 'DashboardCtrl@index')->name('dash.home');
+	Route::get('', 'QuestionnaireCtrl@index')->name('dash.home');
 
 	/**
 	*Rotas para questionários
@@ -47,8 +47,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 		Route::get('editar/{id}', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');
 		Route::post('editar', 'QuestionnaireCtrl@editPost')->name('questionnaire.postEdit');
 
-		Route::get('apagar', 'QuestionnaireCtrl@deleteGet')->name('questionnaire.delete');
-		Route::post('apagar', 'QuestionnaireCtrl@deletePost')->name('questionnaire.delete');
+		Route::get('deletar/{id}', 'QuestionnaireCtrl@deleteGet')->name('questionnaire.delete');
 
 		Route::get('view/{id}', 'QuestionnaireCtrl@view')->name('questionnaire.view');
 
@@ -59,8 +58,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 			Route::get('', 'CloseQuestionCtrl@index')->name('close_question');
 
-			Route::get('criar', 'CloseQuestionCtrl@createGet')->name('close_question.create');
-			Route::post('criar', 'CloseQuestionCtrl@createPost')->name('close_question.create');
+			Route::post('criar', 'CloseQuestionCtrl@create')->name('close_question.create');
+			
+			//Route::get('criar', 'CloseQuestionCtrl@createGet')->name('close_question.create');
+			//Route::post('criar', 'CloseQuestionCtrl@createPost')->name('close_question.create');
 
 			Route::get('editar/{id}', 'CloseQuestionCtrl@editGet')->name('close_question.edit.get');
 			Route::post('editar', 'CloseQuestionCtrl@editPost')->name('close_question.edit');

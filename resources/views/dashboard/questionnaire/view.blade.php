@@ -1,20 +1,28 @@
 @extends('templates.dashboard')
-@section('titulo') Questionário : {{ $questionnaire->title }}@endsection
+@section('titulo'){{ $questionnaire->title }}@endsection
 @section('content')
 <div class="nav-buttons">
-	<a href="{{ route('questionnaire') }}" class="btn btn-default">Voltar</a>
-</div>
+	<a href="{{ route('questionnaire') }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
 
-<article>
+
+	{{ Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
+		{{ Form::hidden('questionnaire_id', $questionnaire->id) }}
+		<button type="submit" class="btn btn-success"><i class="fa fa-check-square" aria-hidden="true"></i> Questão Fechada</button>
+	{{ Form::close()}}
+
+
+	
+</div>
+	
+<div class="questionnaire">
 	<header>
 		<span> Publicado em: <time datetime="{{ $questionnaire->ini_date}}" pubdate> {{ date('d/m/Y', strtotime($questionnaire->ini_date))}}</time></span>
 	</header>
 
 	<p>{{ $questionnaire->description }}</p>
-	
-</article>
+</div>
 
-
+@if (count($questionnaire->openQuestions) > 0)
 {{-- Questões Abertas --}}
 <div class="panel panel-primary">
 	<div class="panel-heading">
@@ -33,6 +41,7 @@
 		
 	</div>
 </div>
+@endif
 
 
 
@@ -62,14 +71,3 @@
 @endif
 @endsection
 
-@section('style')
-	<style>
-		.question{
-			text-align: justify;
-			margin-bottom: 40px;
-			padding-bottom: 10px;
-			border-bottom: 1px solid #eee;
-
-		}
-	</style>
-@endsection
