@@ -60,8 +60,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 			Route::post('criar', 'CloseQuestionCtrl@create')->name('close_question.create');
 			
-			//Route::get('criar', 'CloseQuestionCtrl@createGet')->name('close_question.create');
-			//Route::post('criar', 'CloseQuestionCtrl@createPost')->name('close_question.create');
+			Route::post('salvar', 'CloseQuestionCtrl@createPost')->name('close_question.save');
 
 			Route::get('editar/{id}', 'CloseQuestionCtrl@editGet')->name('close_question.edit.get');
 			Route::post('editar', 'CloseQuestionCtrl@editPost')->name('close_question.edit');

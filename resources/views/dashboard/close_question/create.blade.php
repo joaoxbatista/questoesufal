@@ -8,8 +8,9 @@
 	
 </div>
 
-{{Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
+{{Form::open(['method' => 'post', 'route' => 'close_question.save'])}}
 {{Form::hidden('user_id',  Auth::user()->id)}}
+{{Form::hidden('questionnaire_id',  $questionnaire_id)}}
 
 <div class="form-group">
 	{{Form::label('statment', 'Enunciado')}}
@@ -50,10 +51,3 @@
 {{Form::close()}}
 @endsection
 
-@section('scripts')
-<script>
-	$(document).ready(function(){
-		console.log($('#alternative'));
-	});
-</script>
-@endsection

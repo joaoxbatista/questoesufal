@@ -15,12 +15,11 @@ class CloseQuestionCtrl extends Controller
 		$questionnaire_id = $request->get('questionnaire_id');
 		return view('dashboard.close_question.create', compact('questionnaire_id'));
 	}
-	public function createGet(){
-		$questionnaires = Questionnaire::all()->pluck('title', 'id');
-		return view('dashboard.close_question.create', compact('questionnaires'));
-	}
+
 	
 	public function createPost(Request $request){
+
+		//dd($request->get('questionnaire_id'));
 
 		$this->validate($request, 
 			[
@@ -44,7 +43,8 @@ class CloseQuestionCtrl extends Controller
 			endif;
 		}
 		
-		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
+		return redirect()->route('questionnaire.view', $request->get('questionnaire_id'))->with('success', 'Questão fechada cadastrada com sucesso!');
+		
 	}
 
 	public function editGet($id){
@@ -65,7 +65,7 @@ class CloseQuestionCtrl extends Controller
 			if(!empty($alternative)):
 				Alternative::create([
 						'statement' => $alternative,
-						'close_question_id' => $close_question_id
+						'close_question_id' => $close_question->id
 				]);
 			endif;
 		}
