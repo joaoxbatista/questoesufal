@@ -11,9 +11,9 @@
 	{{ Form::close()}}
 
 
-	
+
 </div>
-	
+
 <div class="questionnaire">
 	<header>
 		<span> Publicado em: <time datetime="{{ $questionnaire->ini_date}}" pubdate> {{ date('d/m/Y', strtotime($questionnaire->ini_date))}}</time></span>
@@ -24,21 +24,21 @@
 
 @if (count($questionnaire->openQuestions) > 0)
 {{-- Questões Abertas --}}
-<div class="panel panel-primary">
-	<div class="panel-heading">
+<div class="question">
+	<div class="question-header">
 		<h3>Questões Abertas</h3>
 	</div>
-	<div class="panel-body">
+	<div class="question-body">
 		@foreach ($questionnaire->openQuestions as $index => $openQuestion)
 		<div class="question">
-			<h4>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h4>
+			<h1>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h1>
 			<p> <strong>Observações: </strong>{{ $openQuestion->comments }}</p>
-			<a href="{{ route('open_question.edit.get', [$openQuestion->id]) }}" class="btn btn-warning">Editar</a>
-			<a href="{{ route('open_question.delete.get', [$openQuestion->id]) }}" class="btn btn-danger">Deletar</a>
+			<a href="{{ route('open_question.edit.get', [$openQuestion->id]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+			<a href="{{ route('open_question.delete.get', [$openQuestion->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
 		</div>
 		@endforeach
 
-		
+
 	</div>
 </div>
 @endif
@@ -47,27 +47,26 @@
 
 @if (count($questionnaire->closeQuestions) > 0)
 {{-- Questões Fechadas --}}
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3>Questões Fechadas</h3>
+<div class="question">
+	<div class="question-header">
+		Questões Fechadas
 	</div>
-	<div class="panel-body">
+	<div class="question-body">
 		@foreach ($questionnaire->closeQuestions as $index => $closeQuestion)
-		<div class="question">
-			<h4>{{ $index+=1 }}ª) {{ $closeQuestion->statement }}</h4>
-			<p><strong>Observações: </strong>{{ $closeQuestion->comments }}</p>
+		<div class="question-content">
+			<h1>{{ $index+=1 }}ª) {{ $closeQuestion->statement }}</h1>
 			<ol>
 				@foreach ($closeQuestion->alternatives as $alternative)
 				<li>{{$alternative->statement}}</li>
 				@endforeach
 			</ol>
-		
-			<a href="{{ route('close_question.edit.get', [$closeQuestion->id]) }}" class="btn btn-warning">Editar</a>
-			<a href="{{ route('close_question.delete.get', [$closeQuestion->id]) }}" class="btn btn-danger">Deletar</a>
+			<p><strong>Observações: </strong>{{ $closeQuestion->comments }}</p>
+			<a href="{{ route('close_question.edit.get', [$closeQuestion->id]) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+			<a href="{{ route('close_question.delete.get', [$closeQuestion->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</a>
 		</div>
+
 		@endforeach
 	</div>
 </div>
 @endif
 @endsection
-

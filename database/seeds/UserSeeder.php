@@ -14,9 +14,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
         	'name' => 'João Batista Gomes Silva',
         	'email' => 'admin@admin.com',
-        	'password' => bcrypt('admin'),
-        	'phone' => '981413960',
-        	'address' => 'Coité do Nóia'
+        	'password' => bcrypt('admin')
         ]);
     }
 }

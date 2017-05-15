@@ -1,6 +1,6 @@
 @extends('templates.dashboard')
-@section('titulo') Dashboard - ínicio @endsection
-@section('content') 
-	
+@section('titulo') Página Inicial @endsection
+@section('content')
+
 
 @endsection
