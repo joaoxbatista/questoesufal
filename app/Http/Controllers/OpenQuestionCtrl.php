@@ -9,13 +9,16 @@ class OpenQuestionCtrl extends Controller
 {
 	public function index(){}
 
-	public function createGet(){
-		$questionnaires = Questionnaire::all()->pluck('title', 'id');
-		return view('dashboard.open_question.create', compact('questionnaires'));
+	//Método que retorna a view para cadastro da questão aberta
+	public function getStore(Request $request){
+		$questionnaire_id = $request->get('questionnaire_id');
+		return view('dashboard.open_question.create', compact('questionnaire_id'));
 	}
-	public function createPost(Request $request){
 
-		$this->validate($request, 
+
+	public function store(Request $request){
+
+		$this->validate($request,
 			[
 				'statement' => 'required',
 				'comments' => 'max:80',
@@ -24,7 +27,7 @@ class OpenQuestionCtrl extends Controller
 		);
 
 		OpenQuestion::create($request->except('_token'));
-		return redirect()->back()->with('success', 'Questão aberta cadastrada com sucesso!');
+		echo "Cadastrado com sucesso!";
 	}
 
 	public function editGet($id){

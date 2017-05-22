@@ -59,7 +59,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 			Route::get('', 'CloseQuestionCtrl@index')->name('close_question');
 
 			Route::post('criar', 'CloseQuestionCtrl@create')->name('close_question.create');
-			
+
 			Route::post('salvar', 'CloseQuestionCtrl@createPost')->name('close_question.save');
 
 			Route::get('editar/{id}', 'CloseQuestionCtrl@editGet')->name('close_question.edit.get');
@@ -75,13 +75,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 				Route::get('adicionar/{id}', 'AlternativeCtrl@add')->name('alternative.add');
 				Route::post('adicionar', 'AlternativeCtrl@addPost')->name('alternative.add.post');
-				
+
 				Route::get('editar', 'AlternativeCtrl@editGet')->name('alternative.edit');
 				Route::get('editar', 'AlternativeCtrl@editPost')->name('alternative.edit');
 
 				Route::get('apagar', 'AlternativeCtrl@deleteGet')->name('alternative.delete');
 				Route::get('apagar', 'AlternativeCtrl@deletePost')->name('alternative.delete');
-			});	
+			});
 
 		});
 
@@ -91,8 +91,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 		Route::group(['prefix' => 'questao_aberta'], function(){
 
 			Route::get('', 'OpenQuestionCtrl@index')->name('open_question');
-			Route::get('criar', 'OpenQuestionCtrl@createGet')->name('open_question.create');
-			Route::post('criar', 'OpenQuestionCtrl@createPost')->name('open_question.create');
+
+			Route::post('', 'OpenQuestionCtrl@getStore')->name('open_question');
+
+			Route::post('criar', 'OpenQuestionCtrl@store')->name('open_question.save');
 
 			Route::get('editar/{id}', 'OpenQuestionCtrl@editGet')->name('open_question.edit.get');
 			Route::post('editar', 'OpenQuestionCtrl@editPost')->name('open_question.edit');
@@ -103,4 +105,3 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 		});
 	});
 });
-

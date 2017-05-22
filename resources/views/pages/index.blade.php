@@ -1,9 +1,20 @@
 @extends('templates.base')
 @section('titulo') Dashboard - Questionarios @endsection
 @section('content')
-<div class="col-md-6">
-	<h2>Universidade Federal de Alagoas - Campus Arapiraca</h2>
-	<h3>Aplicação para Cadastro de Questionários</h3>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae porro unde eveniet quaerat labore facere in, repudiandae quisquam officia praesentium omnis, obcaecati dignissimos aliquid temporibus? Id ad laboriosam numquam recusandae!</p>
+
+
+<div class="col-md-12">
+	@foreach($questionnaires as $questionnaire)
+		<div class="questionnaire">
+			<h1> {{ $questionnaire->title }}</h1>
+			<span class="label label-default">Criado por {{ $questionnaire->user->name}}</span>
+			<span class="label label-warning">Data de termino {{ date('d/m/Y', strtotime($questionnaire->end_date)) }}</span>
+			<p>
+				{{ $questionnaire->description }}
+			</p>
+			<a href="#" class="btn btn-success">Responder</a>
+		</div>
+	@endforeach
 </div>
+
 @endsection

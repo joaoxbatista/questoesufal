@@ -4,13 +4,17 @@
 <div class="nav-buttons">
 	<a href="{{ route('questionnaire') }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
 
+	<div class="questions-buttons">
+		{{ Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
+			{{ Form::hidden('questionnaire_id', $questionnaire->id) }}
+			<button type="submit" class="btn btn-success"><i class="fa fa-check-square" aria-hidden="true"></i> Questão Fechada</button>
+		{{ Form::close()}}
 
-	{{ Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
-		{{ Form::hidden('questionnaire_id', $questionnaire->id) }}
-		<button type="submit" class="btn btn-success"><i class="fa fa-check-square" aria-hidden="true"></i> Questão Fechada</button>
-	{{ Form::close()}}
-
-
+		{{ Form::open(['method' => 'post', 'route' => 'open_question'])}}
+			{{ Form::hidden('questionnaire_id', $questionnaire->id) }}
+			<button type="submit" class="btn btn-success"><i class="fa fa-pencil-square" aria-hidden="true"></i> Questão Aberta</button>
+		{{ Form::close()}}
+	</div>
 
 </div>
 
@@ -26,15 +30,15 @@
 {{-- Questões Abertas --}}
 <div class="question">
 	<div class="question-header">
-		<h3>Questões Abertas</h3>
+		Questões Abertas
 	</div>
 	<div class="question-body">
 		@foreach ($questionnaire->openQuestions as $index => $openQuestion)
-		<div class="question">
+		<div class="question-content">
 			<h1>{{ $index+=1 }}ª) {{ $openQuestion->statement }}</h1>
 			<p> <strong>Observações: </strong>{{ $openQuestion->comments }}</p>
-			<a href="{{ route('open_question.edit.get', [$openQuestion->id]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-			<a href="{{ route('open_question.delete.get', [$openQuestion->id]) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+			<a href="{{ route('open_question.edit.get', [$openQuestion->id]) }}" class="btn btn-warning">Editar<i class="fa fa-pencil"></i></a>
+			<a href="{{ route('open_question.delete.get', [$openQuestion->id]) }}" class="btn btn-danger">Deletar<i class="fa fa-trash"></i></a>
 		</div>
 		@endforeach
 
@@ -55,6 +59,7 @@
 		@foreach ($questionnaire->closeQuestions as $index => $closeQuestion)
 		<div class="question-content">
 			<h1>{{ $index+=1 }}ª) {{ $closeQuestion->statement }}</h1>
+			<h2>Alternativas</h2>
 			<ol>
 				@foreach ($closeQuestion->alternatives as $alternative)
 				<li>{{$alternative->statement}}</li>
@@ -69,4 +74,6 @@
 	</div>
 </div>
 @endif
+
+
 @endsection

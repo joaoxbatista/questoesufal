@@ -4,11 +4,14 @@
   border-radius: 6px
   font-weight: bold
   font-size: 14px
+  margin-bottom: 20px
+
+  p
+    margin-top: 20px
 
 .question
   margin-top: 20px
-  margin-bottom: 10px
-  border: 1px solid $azul-fosco
+  margin-bottom: 40px
   border-radius: 4px
 
   .question-header
@@ -34,9 +37,20 @@
       border-bottom: 1px solid $cinza-claro
 
       h1
-        font-size: 24px
+        font-size: 20px
         color: $azul-marinho
         display: block
+        text-align: justify
+        margin-bottom: 10px
+        font-weight: bold
+
+      h2
+        font-size: 18px
+        color: $branco
+        background-color: $verde
+        display: inline-block
+        padding: 5px
+        border-radius: 4px 4px 0px 0px
 
       p
         background: $azul-marinho
@@ -44,3 +58,28 @@
         margin-bottom: 20px
         padding: 4px 10px
         border-radius: 4px
+
+      ol
+        list-style: none
+        padding: 20px 10px 10px 40px
+        margin-bottom: 20px
+        margin-top: -10px
+        border-radius: 0px 4px 4px 4px
+        background: $azul-fosco
+        color: $branco
+
+        li
+          margin-bottom: 25px
+          z-index: 1
+
+          &::before
+            content: ''
+            height: 10px
+            width: 10px
+            border-radius: 5px
+            background: $verde
+            display: inline-block
+            position: absolute
+            margin-left: -20px
+            margin-top: 5px
+            z-index: 3

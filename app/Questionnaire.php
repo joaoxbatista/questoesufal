@@ -16,4 +16,8 @@ class Questionnaire extends Model
     public function CloseQuestions(){
     	return $this->hasMany('App\CloseQuestion');
     }
+
+    public function user(){
+      return $this->belongsTo('App\User');
+    }
 }
