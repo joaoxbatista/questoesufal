@@ -4,7 +4,7 @@
 
 
 	<div class="nav-buttons">
-		<a href="{{ route('questionnaire.view', $questionnaire_id) }}" class="btn btn-default">Voltar</a>
+		<a href="{{ route('questionnaire.view', $questionnaire_id) }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
 	</div>
 
 	{{Form::open(['method' => 'post', 'route' => 'open_question.save'])}}

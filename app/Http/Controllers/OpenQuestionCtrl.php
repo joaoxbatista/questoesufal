@@ -25,9 +25,9 @@ class OpenQuestionCtrl extends Controller
 				'user_id' => 'required'
 			]
 		);
-
 		OpenQuestion::create($request->except('_token'));
-		echo "Cadastrado com sucesso!";
+
+		return redirect()->route('questionnaire.view', $request->get('questionnaire_id'))->with('success', 'Questão fechada editada com sucesso!');
 	}
 
 	public function editGet($id){

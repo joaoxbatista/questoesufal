@@ -76,11 +76,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 				Route::get('adicionar/{id}', 'AlternativeCtrl@add')->name('alternative.add');
 				Route::post('adicionar', 'AlternativeCtrl@addPost')->name('alternative.add.post');
 
-				Route::get('editar', 'AlternativeCtrl@editGet')->name('alternative.edit');
-				Route::get('editar', 'AlternativeCtrl@editPost')->name('alternative.edit');
 
-				Route::get('apagar', 'AlternativeCtrl@deleteGet')->name('alternative.delete');
-				Route::get('apagar', 'AlternativeCtrl@deletePost')->name('alternative.delete');
+				Route::post('editar', 'AlternativeCtrl@editPost')->name('alternative.edit');
+
+				Route::get('apagar/{id}', 'AlternativeCtrl@deleteGet')->name('alternative.delete');
+
 			});
 
 		});
@@ -104,4 +104,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 		});
 	});
+});
+
+/*Rotas para repostas de questionários*/
+Route::group(['prefix' => 'responder'], function(){
+	Route::get('/{id}', 'AnswareCtrl@getQuestionnarie')->name('answare.questionnaire.view');
+	Route::post('/enviar', 'AnswareCtrl@Store')->name('answare.questionnaire.store');
 });

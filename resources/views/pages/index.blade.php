@@ -12,7 +12,7 @@
 			<p>
 				{{ $questionnaire->description }}
 			</p>
-			<a href="#" class="btn btn-success">Responder</a>
+			<a href="/responder/{{ $questionnaire->id }}" class="btn btn-success">Responder</a>
 		</div>
 	@endforeach
 </div>

@@ -8,4 +8,8 @@ class OpenQuestion extends Model
 {
 	protected $fillable = ['statement', 'comments', 'user_id', 'questionnaire_id'];
 	public $timestamps = false;
+
+	public function questionnaire(){
+		return $this->belongsTo('App\Questionnaire');
+	}
 }

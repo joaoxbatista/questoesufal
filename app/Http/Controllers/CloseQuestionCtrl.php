@@ -11,29 +11,29 @@ class CloseQuestionCtrl extends Controller
     public function index(){}
 
 	public function create(Request $request){
-		
+
 		$questionnaire_id = $request->get('questionnaire_id');
 		return view('dashboard.close_question.create', compact('questionnaire_id'));
 	}
 
-	
+
 	public function createPost(Request $request){
 
 		//dd($request->get('questionnaire_id'));
 
-		$this->validate($request, 
+		$this->validate($request,
 			[
 				'statement' => 'required',
 				'user_id' => 'required',
 
 			]
 		);
-		
+
 		$close_question_id = CloseQuestion::create($request->except('_token'))->id;
 
 		$alternatives = $request->input('alternatives');
 
-		
+
 		foreach ($alternatives as $alternative) {
 			if(!empty($alternative)):
 				Alternative::create([
@@ -42,34 +42,26 @@ class CloseQuestionCtrl extends Controller
 				]);
 			endif;
 		}
-		
-		return redirect()->route('questionnaire.view', $request->get('questionnaire_id'))->with('success', 'Questão fechada cadastrada com sucesso!');
-		
+
+		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
+
 	}
 
 	public function editGet($id){
-		
+
 		$close_question = CloseQuestion::find($id);
 
 		return view('dashboard.close_question.edit', compact('close_question'));
 	}
 	public function editPost(Request $request){
-		
-		$close_question= CloseQuestion::find($request->input('id'));
 
+		$close_question = CloseQuestion::find($request->input('id'));
+    $close_question->update(
+      $request->only(['statement', 'comments'])
+    );
 
-		$alternatives = $request->input('alternatives');
+    return redirect()->route('questionnaire.view', $request->get('questionnaire_id'))->with('success', 'Questão fechada editada com sucesso!');
 
-		
-		foreach ($alternatives as $alternative) {
-			if(!empty($alternative)):
-				Alternative::create([
-						'statement' => $alternative,
-						'close_question_id' => $close_question->id
-				]);
-			endif;
-		}
-		
 	}
 
 	public function deleteGet($id){

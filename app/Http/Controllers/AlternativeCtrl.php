@@ -1,5 +1,5 @@
 <?php
-	
+
 	namespace App\Http\Controllers;
 	use Illuminate\Http\Request;
 	use App\Alternative;
@@ -17,13 +17,19 @@
 			return redirect()->back()->with('success', 'Alternativa adicionada com sucesso!');
 		}
 
-		public function deletGet(){}
-
-		public function editGet(){}
-
-		public function deletePost(){}
-
-		public function editPost(){}
+		public function deleteGet($id){
+			Alternative::find($id)->delete();
+			return redirect()->back()->with('success', 'Alternativa removida com sucesso!');
+		}
 
 
-	}	
+
+		public function editPost(Request $request){
+			$alternative = Alternative::find($request->get('id'));
+			$alternative->statement = $request->get('statement');
+			$alternative->update();
+			return redirect()->back()->with('success', 'Alternativa alterada com sucesso!');
+		}
+
+
+	}

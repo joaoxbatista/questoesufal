@@ -1,11 +1,8 @@
 @extends('templates.dashboard')
 @section('titulo') Dashboard - Criação de Questões fechadas @endsection
-@section('content') 
+@section('content')
 <div class="nav-buttons">
 	<a href="{{ route('questionnaire.view', $questionnaire_id) }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
-
-
-	
 </div>
 
 {{Form::open(['method' => 'post', 'route' => 'close_question.save'])}}
@@ -50,4 +47,3 @@
 
 {{Form::close()}}
 @endsection
-
