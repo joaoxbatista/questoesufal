@@ -45,7 +45,7 @@ class AnswareCtrl extends Controller{
       endforeach;
     endif;
 
-    return redirect()->route('inicio')->with('success', 'Questionário respondido com sucesso! Obrigado pela atenão.');
+    return redirect()->route('inicio')->with('success', 'Questionário respondido com sucesso! Obrigado pela atensão.');
   }
 
 }
