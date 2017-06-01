@@ -15,6 +15,7 @@ class CreateOpenAnswaresTable extends Migration
     {
         Schema::create('open_answares', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('value');
             $table->integer('answare_id')->unsigned();
             $table->foreign('answare_id')->references('id')->on('answares');
             $table->integer('open_question_id')->unsigned();

@@ -15,10 +15,14 @@ class CreateCloseAnswaresTable extends Migration
     {
         Schema::create('close_answares', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('answare_id')->unsigned();
             $table->integer('close_question_id')->unsigned();
-            $table->foreign('answare_id')->references('id')->on('answares');
-            $table->foreign('close_question_id')->references('id')->on('close_questions');
+            $table->integer('alternative_id')->unsigned();
+
+            $table->foreign('answare_id')->references('id')->on('answares')->onDelete('cascade');
+            $table->foreign('close_question_id')->references('id')->on('close_questions')->onDelete('cascade');
+            $table->foreign('alternative_id')->references('id')->on('alternatives')->onDelete('cascade');
         });
     }
 

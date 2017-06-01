@@ -13,11 +13,9 @@
 </div>
 
 
-
-
-
 {{ Form::open(['method' => 'post', 'route' => 'answare.questionnaire.store'])}}
 
+  {{ Form::hidden('questionnaire_id', $questionnaire->id)}}
   {{-- Questões Abertas --}}
   @if (count($questionnaire->openQuestions) > 0)
   <div class="question">
@@ -25,10 +23,11 @@
       Questão Aberta
     </div>
     <div class="question-body">
-      @foreach ($questionnaire->openQuestions as $index => $openQuestion)
+      @foreach ($questionnaire->openQuestions as $openQuestion)
       <div class="question-content">
         <h1>{{ $openQuestion->statement }}</h1>
-        {{ Form::textarea('openQuestion['.$openQuestion->id.']', '', ['class' => 'form-control', 'placeholder' => 'Insira sua resposta aqui.'])}}
+
+        {{ Form::textarea('openQuestions['.$openQuestion->id.']', '', ['class' => 'form-control', 'placeholder' => 'Insira sua resposta aqui.'])}}
 
       </div>
       @endforeach
@@ -50,8 +49,8 @@
 
         @foreach($closeQuestion->alternatives as $indexAlternative => $alternative)
           <div class="well">
-            {{ Form::radio('CloseQuestion['.$closeQuestion->id.']', $alternative->statement, true)}}
-            {{ Form::label('CloseQuestion['.$closeQuestion->id.']', $alternative->statement)}}
+            {{ Form::radio('closeQuestions['.$closeQuestion->id.']', $alternative->id, true)}}
+            {{ Form::label('closeQuestions['.$closeQuestion->id.']', $alternative->statement)}}
           </div>
         @endforeach
 

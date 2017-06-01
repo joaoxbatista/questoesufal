@@ -15,12 +15,9 @@ class CreateAnswaresTable extends Migration
     {
         Schema::create('answares', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
-            $table->integer('responder_id')->unsigned();
+            $table->timestamps();
             $table->integer('questionnaire_id')->unsigned();
-            
-            $table->foreign('responder_id')->references('id')->on('responders');
-            $table->foreign('questionnaire_id')->references('id')->on('questionnaires');
+            $table->foreign('questionnaire_id')->references('id')->on('questionnaires')->onDelete('cascade');
         });
     }
 

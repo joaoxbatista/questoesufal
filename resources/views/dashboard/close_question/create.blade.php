@@ -5,7 +5,7 @@
 	<a href="{{ route('questionnaire.view', $questionnaire_id) }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
 </div>
 
-{{Form::open(['method' => 'post', 'route' => 'close_question.save'])}}
+{{Form::open(['method' => 'post', 'route' => 'close_question.create'])}}
 {{Form::hidden('user_id',  Auth::user()->id)}}
 {{Form::hidden('questionnaire_id',  $questionnaire_id)}}
 

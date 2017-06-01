@@ -19,7 +19,6 @@ class CloseQuestionCtrl extends Controller
 
 	public function createPost(Request $request){
 
-		//dd($request->get('questionnaire_id'));
 
 		$this->validate($request,
 			[
