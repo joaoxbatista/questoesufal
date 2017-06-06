@@ -8,4 +8,8 @@ class OpenAnsware extends Model
 {
    protected $fillable = ['answare_id', 'value', 'open_question_id'];
    public $timestamps = false;
+
+   public function openQuestion(){
+     return $this->belongsTo('App\OpenQuestion');
+   }
 }

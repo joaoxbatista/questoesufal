@@ -12,17 +12,19 @@
 */
 
 
-Auth::routes();
+
 
 /**
 *Rotas das Páginas
 */
 Route::get('/', 'PagesCtrl@index')->name('inicio');
 
-
 /**
-*Rotas do Login
+*Rotas para realizar login
 */
+
+Auth::routes();
+
 Route::get('/sair', function(){
 	Auth::logout();
 	return Redirect::route('inicio');
@@ -30,10 +32,25 @@ Route::get('/sair', function(){
 
 
 /**
-*Rotas do Painel
+*Rotas para repostas de questionários. Não existe necessidade de authenticação
+*/
+Route::group(['prefix' => 'responder'], function(){
+	Route::get('/{id}', 'AnswareCtrl@getQuestionnarie')->name('answare.questionnaire.view');
+	Route::post('/enviar', 'AnswareCtrl@Store')->name('answare.questionnaire.store');
+});
+
+
+/**
+* Rotas com necessidade de authenticação - Dashboard Administratívo
 */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 	Route::get('', 'QuestionnaireCtrl@index')->name('dash.home');
+
+
+	/**
+	*Rotas para visualização de respostas
+	*/
+	Route::get('respostas', 'AnswareCtrl@index')->name('answare');
 
 	/**
 	*Rotas para questionários
@@ -104,10 +121,4 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 		});
 	});
-});
-
-/*Rotas para repostas de questionários*/
-Route::group(['prefix' => 'responder'], function(){
-	Route::get('/{id}', 'AnswareCtrl@getQuestionnarie')->name('answare.questionnaire.view');
-	Route::post('/enviar', 'AnswareCtrl@Store')->name('answare.questionnaire.store');
 });

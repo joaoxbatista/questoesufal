@@ -9,6 +9,11 @@ use App\Answare;
 
 class AnswareCtrl extends Controller{
 
+  public function index(Request $request){
+    $answares = Answare::all();
+    return view('dashboard.answare.index', compact('answares'));
+  }
+
   public function getQuestionnarie($id){
     $questionnaire = questionnaire::find($id);
     return view('answare.view', compact('questionnaire'));
@@ -45,7 +50,7 @@ class AnswareCtrl extends Controller{
       endforeach;
     endif;
 
-    return redirect()->route('inicio')->with('success', 'Questionário respondido com sucesso! Obrigado pela atensão.');
+    return redirect()->route('inicio')->with('success', 'Questionário respondido! Obrigado pela atenção.');
   }
 
 }

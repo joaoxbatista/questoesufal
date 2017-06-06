@@ -3,8 +3,9 @@
 @section('content')
 		<div class="nav-buttons">
 			<a href="{{ route('questionnaire.create') }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Novo</a>
+			<a href="{{ route('answare') }}" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Respostas</a>
 		</div>
-		<table class="table table-bordered">
+		<table class="table table-bordered" id="list-questionnaires">
 				<thead>
 						<tr>
 							<th>#</th>
@@ -33,4 +34,16 @@
 						@endforeach
 				</tbody>
 		</table>
+@endsection
+
+@section('style')
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+@endsection
+@section('scripts')
+	<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+	<script type="text/javascript">
+		$(document).ready( function () {
+			$('#list-questionnaires').DataTable();
+		} );
+	</script>
 @endsection

@@ -17,9 +17,9 @@ class CreateOpenAnswaresTable extends Migration
             $table->increments('id');
             $table->text('value');
             $table->integer('answare_id')->unsigned();
-            $table->foreign('answare_id')->references('id')->on('answares');
+            $table->foreign('answare_id')->references('id')->on('answares')->onDelete('cascade');
             $table->integer('open_question_id')->unsigned();
-            $table->foreign('open_question_id')->references('id')->on('open_questions');
+            $table->foreign('open_question_id')->references('id')->on('open_questions')->onDelete('cascade');
         });
     }
 

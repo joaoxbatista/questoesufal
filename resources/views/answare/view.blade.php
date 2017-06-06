@@ -45,8 +45,6 @@
   		@foreach ($questionnaire->closeQuestions as $indexCloseQuestion => $closeQuestion)
   		<div class="question-content">
         <h1>{{ $closeQuestion->statement }}</h1>
-  			<h2>Alternativas</h2>
-
         @foreach($closeQuestion->alternatives as $indexAlternative => $alternative)
           <div class="well">
             {{ Form::radio('closeQuestions['.$closeQuestion->id.']', $alternative->id, true)}}

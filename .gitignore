@@ -6,6 +6,6 @@
 /storage/*.key
 /vendor
 /.idea
+/tasks
 Homestead.json
 Homestead.yaml
-

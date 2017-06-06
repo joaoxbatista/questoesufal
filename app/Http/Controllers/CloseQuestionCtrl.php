@@ -8,18 +8,15 @@ use App\questionnaire;
 
 class CloseQuestionCtrl extends Controller
 {
-    public function index(){}
+
+  public function index(){}
 
 	public function create(Request $request){
-
 		$questionnaire_id = $request->get('questionnaire_id');
 		return view('dashboard.close_question.create', compact('questionnaire_id'));
 	}
 
-
 	public function createPost(Request $request){
-
-
 		$this->validate($request,
 			[
 				'statement' => 'required',
@@ -27,12 +24,8 @@ class CloseQuestionCtrl extends Controller
 
 			]
 		);
-
 		$close_question_id = CloseQuestion::create($request->except('_token'))->id;
-
 		$alternatives = $request->input('alternatives');
-
-
 		foreach ($alternatives as $alternative) {
 			if(!empty($alternative)):
 				Alternative::create([
@@ -41,9 +34,7 @@ class CloseQuestionCtrl extends Controller
 				]);
 			endif;
 		}
-
 		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
-
 	}
 
 	public function editGet($id){
@@ -52,7 +43,8 @@ class CloseQuestionCtrl extends Controller
 
 		return view('dashboard.close_question.edit', compact('close_question'));
 	}
-	public function editPost(Request $request){
+
+  public function editPost(Request $request){
 
 		$close_question = CloseQuestion::find($request->input('id'));
     $close_question->update(
@@ -67,7 +59,5 @@ class CloseQuestionCtrl extends Controller
 		CloseQuestion::find($id)->delete();
 		return redirect()->back()->with('success', 'Questão removida com sucesso!');
 	}
-	public function deletePost(Request $request){
 
-	}
 }
