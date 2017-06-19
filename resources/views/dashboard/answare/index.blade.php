@@ -5,16 +5,19 @@ Questionários / Respostas
 @endsection
 
 @section('content')
-  @foreach($answares as $answare)
 
+  <div class="nav-buttons">
+    <a href="{{ route('dash.home') }}" class="btn btn-default">Voltar</a>
+  </div>
+  
+  @foreach($answares as $answare)
   <div class="well">
     <span class="label label-success"> <i class="fa fa-check"></i> Respondido em {{ date('d/m/Y', strtotime($answare->created_at))}}</span>
     <span class="label label-info"> <i class="fa fa-clock-o"></i> Criado em {{ date('d/m/Y', strtotime($answare->questionnaire->ini_date))}}</span>
-    
+
     <div class="info-questionnaire">
       <h3>Informações do questionário</h3>
       <p>{{ $answare->questionnaire->title }}.  </p>
-
     </div>
 
     <div class="info-question">

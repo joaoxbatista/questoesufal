@@ -17,6 +17,8 @@ class CloseQuestionCtrl extends Controller
 	}
 
 	public function createPost(Request $request){
+
+    //Validação da requisição
 		$this->validate($request,
 			[
 				'statement' => 'required',
@@ -24,7 +26,11 @@ class CloseQuestionCtrl extends Controller
 
 			]
 		);
+
+    //Criação da Questão Fechada
 		$close_question_id = CloseQuestion::create($request->except('_token'))->id;
+
+    //Cadastrar Alternativas
 		$alternatives = $request->input('alternatives');
 		foreach ($alternatives as $alternative) {
 			if(!empty($alternative)):
@@ -34,7 +40,9 @@ class CloseQuestionCtrl extends Controller
 				]);
 			endif;
 		}
-		return redirect()->back()->with('success', 'Questão fechada cadastrada com sucesso!');
+
+    //Redirecionar caso dê tudo certo
+		return redirect()->route('questionnaire.view', ['id' => $request->get('questionnaire_id')])->with('success', 'Questão fechada cadastrada com sucesso!');
 	}
 
 	public function editGet($id){

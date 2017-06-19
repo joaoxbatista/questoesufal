@@ -16,7 +16,7 @@ return [
     */
 
     'default' => env('CACHE_DRIVER', 'file'),
-
+    'cache' => false,
     /*
     |--------------------------------------------------------------------------
     | Cache Stores

@@ -58,7 +58,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 	Route::group(['prefix' => 'questionario'], function(){
 
 		Route::get('', 'QuestionnaireCtrl@index')->name('questionnaire');
-		Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
+
+		//Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
 		Route::post('criar', 'QuestionnaireCtrl@createPost')->name('questionnaire.create');
 
 		Route::get('editar/{id}', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');
