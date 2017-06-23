@@ -12,7 +12,23 @@
 */
 
 
+/**
+*Rotas dos estudantes
+*/
+Route::group(['prefix' => 'estudantes'], function(){
 
+	Route::get('login', 'Auth\StudentLoginController@showLoginForm')->name('student.login.show');
+	Route::post('login', 'Auth\StudentLoginController@login')->name('student.login');
+	Route::get('register', 'Auth\StudentRegisterController@showRegistrationForm')->name('student.register.show');
+	Route::post('register', 'Auth\StudentRegisterController@register')->name('student.register');
+
+	Route::group(['middleware' => 'auth:student'], function(){
+		Route::get('dashboard', 'StudentController@index')->name('student.dashboard');
+		Route::post('logout', 'Auth\StudentLoginController@logout')->name('student.logout');
+		Route::get('logout', 'Auth\StudentLoginController@logout')->name('student.logout.get');
+	});
+
+});
 
 /**
 *Rotas das Páginas
@@ -59,7 +75,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
 
 		Route::get('', 'QuestionnaireCtrl@index')->name('questionnaire');
 
-		//Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
+		Route::get('criar', 'QuestionnaireCtrl@createGet')->name('questionnaire.create');
 		Route::post('criar', 'QuestionnaireCtrl@createPost')->name('questionnaire.create');
 
 		Route::get('editar/{id}', 'QuestionnaireCtrl@editGet')->name('questionnaire.edit');

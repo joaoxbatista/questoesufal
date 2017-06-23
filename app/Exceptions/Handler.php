@@ -8,6 +8,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
     /**
      * A list of the exception types that should not be reported.
      *
@@ -60,6 +61,18 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest('login');
+        $route = "login";
+
+        if(count($exception->guards()) > 0){
+          $guard = $exception->guards()[0];
+
+          if($guards[0] == 'student')
+          {
+            $route = "student.login";
+          }
+
+        }
+
+        return redirect()->route($route);
     }
 }

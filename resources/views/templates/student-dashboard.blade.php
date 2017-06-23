@@ -7,10 +7,11 @@
 
 	<title>@yield('titulo')</title>
 
-
 	<link rel="stylesheet" type="text/css" href="{{url('css/autoload.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('css/templates/default.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url('bower_components/font-awesome/css/font-awesome.min.css')}}">
 
+	@yield('style')
 </head>
 <body>
 
@@ -23,39 +24,32 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-
 				</button>
 				<a class="navbar-brand" href="{{ route('inicio') }}">
 					<img src="{{ url('imgs/ufal_logo.png') }}">
 					<span>Universidade Federal de Alagoas</span>
 				</a>
 			</div>
-
-
+			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{ route('inicio') }}">Página Inicial</a></li>
+					<li><a href="{{route('questionnaire')}}">Questionários</a></li>
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Estudantes<b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="{{ route('student.register.show') }}">Registro</a></li>
-							<li><a href="{{ route('student.login.show') }}">Entrar</a></li>
+							<li><a href="#">Configurações</a></li>
+							<li><a href="{{ route('student.logout.get') }}">Sair</a></li>
 						</ul>
 					</li>
-
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="{{ route('login') }}">Entrar</a></li>
-						</ul>
-					</li>
-
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</nav>
+	<div class="current-page">
+		<div class="container">Dashboard / @yield('titulo')</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="group-messages">
@@ -79,11 +73,13 @@
 				@endif
 			</div>
 		</div>
-
-		@yield('content')
+		<div class="row">
+			@yield('content')
+		</div>
 	</div>
 
 	<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>
 	<script src="{{ url('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js') }}"></script>
+	@yield('scripts')
 </body>
 </html>

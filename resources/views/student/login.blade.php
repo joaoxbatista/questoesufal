@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="form col-md-6 col-md-offset-2">
-            <p>Login para Administrador</p>
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+            <p>Login para estudantes</p>
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('student.login') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

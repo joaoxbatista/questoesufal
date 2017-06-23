@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'responder' => [
+        'student' => [
             'driver' => 'session',
-            'provider' => 'responders',
+            'provider' => 'students',
         ],
 
 
@@ -76,9 +76,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'responders' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => App\Responder::class,
+            'model' => App\Student::class,
         ],
 
         // 'users' => [

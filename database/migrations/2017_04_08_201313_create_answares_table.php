@@ -16,7 +16,9 @@ class CreateAnswaresTable extends Migration
         Schema::create('answares', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('student_id')->unsigned();
             $table->integer('questionnaire_id')->unsigned();
+            $table->foreight('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('questionnaire_id')->references('id')->on('questionnaires')->onDelete('cascade');
         });
     }
