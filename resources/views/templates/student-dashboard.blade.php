@@ -34,12 +34,12 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{route('questionnaire')}}">Questionários</a></li>
+					<!-- <li><a href="{{route('questionnaire')}}">Questionários</a></li> -->
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Configurações</a></li>
+							<li><a href="{{ route('student.perfil') }}">Perfil</a></li>
 							<li><a href="{{ route('student.logout.get') }}">Sair</a></li>
 						</ul>
 					</li>
@@ -48,7 +48,7 @@
 		</div>
 	</nav>
 	<div class="current-page">
-		<div class="container">Dashboard / @yield('titulo')</div>
+		<div class="container">Dashboard Estudante / @yield('titulo')</div>
 	</div>
 	<div class="container">
 		<div class="row">

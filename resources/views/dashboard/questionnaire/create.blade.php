@@ -1,6 +1,6 @@
 @extends('templates.dashboard')
 @section('titulo') Dashboard - Criação de Questionário @endsection
-@section('content') 
+@section('content')
 
 <div class="nav-buttons">
 	<a href="{{ route('questionnaire') }}" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
@@ -22,7 +22,7 @@
 		{{Form::label('end_date', 'Data de término')}}
 		{{Form::date('end_date', '', ['required' => true, 'class' => 'form-control'])}}
 	</div>
-</div>	
+</div>
 
 <div class="form-group">
 	{{Form::label('description', 'Descrição')}}
@@ -33,6 +33,6 @@
 	<div class="col-md-2">
 		{{Form::submit('Registrar', ['class' => 'btn btn-block btn-success'])}}
 	</div>
-</div>	
+</div>
 {{Form::close()}}
 @endsection

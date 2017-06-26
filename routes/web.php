@@ -26,6 +26,8 @@ Route::group(['prefix' => 'estudantes'], function(){
 		Route::get('dashboard', 'StudentController@index')->name('student.dashboard');
 		Route::post('logout', 'Auth\StudentLoginController@logout')->name('student.logout');
 		Route::get('logout', 'Auth\StudentLoginController@logout')->name('student.logout.get');
+		Route::post('update', 'StudentController@updatePerfil')->name('student.perfil.update');
+		Route::get('perfil', 'StudentController@perfil')->name('student.perfil');
 	});
 
 });

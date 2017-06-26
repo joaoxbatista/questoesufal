@@ -44,11 +44,12 @@ class StudentLoginController extends Controller
       if(Auth::guard('student')->attempt($credentials))
       {
         return redirect()->route('student.dashboard');
-      }else
+      }
+      else
       {
         return redirect()->route('student.login')
-               ->withErrors();
-
+                ->withErrors('E-mail ou senha estão incorretos')
+                ->withInput();
       }
 
     }
