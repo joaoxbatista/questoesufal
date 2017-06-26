@@ -17,7 +17,10 @@
 */
 Route::group(['prefix' => 'estudantes'], function(){
 
-	Route::get('login', 'Auth\StudentLoginController@showLoginForm')->name('student.login.show');
+	Route::group(['middleware' => 'student_guest'], function(){
+		Route::get('login', 'Auth\StudentLoginController@showLoginForm')->name('student.login.show');
+	});
+
 	Route::post('login', 'Auth\StudentLoginController@login')->name('student.login');
 	Route::get('register', 'Auth\StudentRegisterController@showRegistrationForm')->name('student.register.show');
 	Route::post('register', 'Auth\StudentRegisterController@register')->name('student.register');

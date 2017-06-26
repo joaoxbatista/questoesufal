@@ -57,6 +57,7 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
+
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
@@ -66,7 +67,7 @@ class Handler extends ExceptionHandler
         if(count($exception->guards()) > 0){
           $guard = $exception->guards()[0];
 
-          if($guards[0] == 'student')
+          if($guard == 'student')
           {
             $route = "student.login";
           }
