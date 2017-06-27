@@ -7,7 +7,7 @@ Questionários / Respostas
 @section('content')
 
   <div class="nav-buttons">
-    <a href="{{ route('dash.home') }}" class="btn btn-default">Voltar</a>
+    <a href="{{ route('questionnaire') }}" class="btn btn-default">Voltar</a>
   </div>
 
   @foreach($answares as $answare)

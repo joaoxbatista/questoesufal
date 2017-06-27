@@ -17,7 +17,7 @@
 
   {{ Form::hidden('questionnaire_id', $questionnaire->id)}}
   {{ Form::hidden('student_id', auth()->guard('student')->user()->id) }}
-  
+
   {{-- Questões Abertas --}}
   @if (count($questionnaire->openQuestions) > 0)
   <div class="question">
@@ -49,7 +49,7 @@
         <h1>{{ $closeQuestion->statement }}</h1>
         @foreach($closeQuestion->alternatives as $indexAlternative => $alternative)
           <div class="well">
-            {{ Form::radio('closeQuestions['.$closeQuestion->id.']', $alternative->id, true)}}
+            {{ Form::radio('closeQuestions['.$closeQuestion->id.']', $alternative->id)}}
             {{ Form::label('closeQuestions['.$closeQuestion->id.']', $alternative->statement)}}
           </div>
         @endforeach

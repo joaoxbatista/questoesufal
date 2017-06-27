@@ -34,14 +34,9 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{route('questionnaire')}}">Questionários</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Configurações</a></li>
-							<li><a href="{{ route('sair') }}">Sair</a></li>
-						</ul>
-					</li>
+					<li><a href="{{route('dash.home')}}"><i class="fa fa-home"></i></a></li>
+					<li><a href="{{route('questionnaire')}}"><i class="fa fa-pencil"></i></a></li>
+					<li><a href="{{ route('sair') }}"><i class="fa fa-power-off"></i></a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>

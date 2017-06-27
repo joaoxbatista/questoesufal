@@ -10,7 +10,7 @@ class PagesCtrl extends Controller
 
     public function index()
     {
-        $questionnaires = Questionnaire::take(3)->get();
-        return view('pages.index', compact('questionnaires'));
+        return view('pages.index');
     }
+    
 }

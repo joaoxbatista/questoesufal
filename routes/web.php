@@ -70,7 +70,7 @@ Route::group(['prefix' => 'responder'], function(){
 * Rotas com necessidade de authenticação - Dashboard Administratívo
 */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'],function(){
-	Route::get('', 'QuestionnaireCtrl@index')->name('dash.home');
+	Route::get('', 'DashboardCtrl@index')->name('dash.home');
 
 
 	/**
