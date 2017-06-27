@@ -31,6 +31,11 @@ Route::group(['prefix' => 'estudantes'], function(){
 		Route::get('logout', 'Auth\StudentLoginController@logout')->name('student.logout.get');
 		Route::post('update', 'StudentController@updatePerfil')->name('student.perfil.update');
 		Route::get('perfil', 'StudentController@perfil')->name('student.perfil');
+
+		/**
+		* Rotas para acessar os questionários
+		*/
+		Route::get('questionarios', 'QuestionnaireCtrl@getQuestionnaires')->name('student.questionnaire');
 	});
 
 });

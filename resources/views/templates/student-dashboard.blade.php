@@ -34,15 +34,12 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 
 				<ul class="nav navbar-nav navbar-right">
-					<!-- <li><a href="{{route('questionnaire')}}">Questionários</a></li> -->
+					<li><a href="{{route('student.dashboard')}}"><i class="fa fa-home"></i></a></li>
+					<li><a href="{{route('student.questionnaire')}}"><i class="fa fa-pencil"></i></a></li>
+					<li><a href="{{route('student.perfil')}}"><i class="fa fa-user"></i></a></li>
+					<li><a href="{{ route('student.logout.get') }}"><i class="fa fa-power-off"></i></a></li>
 
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="{{ route('student.perfil') }}">Perfil</a></li>
-							<li><a href="{{ route('student.logout.get') }}">Sair</a></li>
-						</ul>
-					</li>
+
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
@@ -52,7 +49,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="group-messages">
+			<div class="row group-messages" style="margin-top: 10px">
 				@if( count($errors) > 0 )
 				<div class="alert alert-danger alert-dismissable">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -73,7 +70,7 @@
 				@endif
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="margin-top: 10px">
 			@yield('content')
 		</div>
 	</div>
