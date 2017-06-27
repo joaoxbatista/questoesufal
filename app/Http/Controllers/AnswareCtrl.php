@@ -21,8 +21,7 @@ class AnswareCtrl extends Controller{
 
   public function store(Request $request){
 
-    $answare = Answare::create(["questionnaire_id" => $request->get('questionnaire_id')]);
-    // dd($answare);
+    $answare = Answare::create($request->only(['questionnaire_id', 'student_id']));
 
     /*
     | Registra as respostas fechadas
@@ -50,7 +49,7 @@ class AnswareCtrl extends Controller{
       endforeach;
     endif;
 
-    return redirect()->route('inicio')->with('success', 'Questionário respondido! Obrigado pela atenção.');
+    return redirect()->route('student.questionnaire')->with('success', 'Questionário respondido! Obrigado pela atenção.');
   }
 
 }

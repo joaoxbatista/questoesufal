@@ -16,6 +16,8 @@
 {{ Form::open(['method' => 'post', 'route' => 'answare.questionnaire.store'])}}
 
   {{ Form::hidden('questionnaire_id', $questionnaire->id)}}
+  {{ Form::hidden('student_id', auth()->guard('student')->user()->id) }}
+  
   {{-- Questões Abertas --}}
   @if (count($questionnaire->openQuestions) > 0)
   <div class="question">
